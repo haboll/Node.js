@@ -1,19 +1,32 @@
+const config = require('./config/config.js');
+const Koa = require('koa');
 
-const config = require("./config/config.js")
-const Koa = require("koa")
+const onerror = require('koa-onerror');
 
-const router  = require("./router/index.js")
+const logger = require('koa-logger');
 
-const app =  new Koa();
+const bodyparser = require('koa-bodyparser');
 
-app.use(router.routes())
+const erroHandler = require('./middlewares/errHandler')
 
-app.use(router.allowedMethods())
+const formattRes = require('./middlewares/formattRes');
 
-app.listen(config.port)
+const router = require('./router/index.js');
 
-// app.use(async ctx => {
-//     ctx.body = 'Hello World';
-//   });
+const app = new Koa();
+
+onerror(app);
+
+app.use(bodyparser());
+
+//app.use(erroHandler());
+
+app.use(formattRes('^/api'));
+
+app.use(router.routes()).use(router.allowedMethods());
+
+app.use(logger())
+
+app.listen(config.port);
 
 console.log(`Server running at http://127.0.0.1:${config.port}/`);

@@ -4,7 +4,7 @@ const config = {
     port: 8001,
     // 数据库配置
     database: {
-      DATABASE: 'test',
+      DATABASE: 'interview',
       USERNAME: 'root',
       PASSWORD: 'Hy20121659',
       PORT: '3306',

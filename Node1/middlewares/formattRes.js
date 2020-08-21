@@ -26,6 +26,7 @@ const formattRes = function (pattern) {
     return async function (ctx, next) {
         var reg = new RegExp(pattern);
         await next();
+        
         //通过正则的url进行格式化处理
         console.log(ctx.originalUrl);
         if (reg.test(ctx.originalUrl)) {

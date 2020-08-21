@@ -3,6 +3,14 @@ const ApiErrorNames = {
         code: -1,
         message: '未知错误'
     },
+    NOT_LOGIN: {
+        code: 100,
+        message: '用户未登录'
+    },
+    TOKEN_EXPIRED: {
+        code: 100,
+        message: 'Token已失效'
+    },
     ID_REQUIRED: {
         code: 101,
         message: 'id is required'
@@ -18,7 +26,15 @@ const ApiErrorNames = {
     FAILED: {
         code: 1,
         message: 'failed'
-    }
+    },
+    QA_NOT_EXIST: {
+        code: 102,
+        message: 'QA不存在'
+    },
+    QA_EXISTED: {
+        code: 103,
+        message: 'QA已存在'
+    },
     
 };
 

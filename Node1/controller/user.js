@@ -64,13 +64,14 @@ const deleteUserInfo = async ctx => {
     }
 };
 
-const getUserList = async ctx => {
+const getUserList = async (ctx, next) => {
     let pageData = {
         pageSize: ctx.query.pageSize,
         pageNum: ctx.query.pageNum
     };
     let result = await userMySql.getUserList(pageData);
     ctx.body = result;
+    await next();
 };
 
 module.exports = {
